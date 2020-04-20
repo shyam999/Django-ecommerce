@@ -1,5 +1,6 @@
 {% extends "shop/base/base2.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}
 {{ product.name }}
 {% endblock %}
@@ -19,34 +20,17 @@
             <img src="{{ product.image.url }}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">{{ product.name }}</h2>
+            <h2 class="text-black mr-2">{{ product.name }}</h2>
             <p>{{ product.description|linebreaks }}</p>
             <p><strong class="text-primary h4">${{ product.price }}</strong></p>
-            <div class="mb-1 d-flex">
-              <label for="option-sm" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
-              </label>
-              <label for="option-md" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
-              </label>
-              <label for="option-lg" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
-              </label>
+            <div class="mt-5 col-md-5">
+              <form action="{% url "cart:cart_add" product.id %}" method="post">
+                {% csrf_token %}
+                {{ cart_product_form|crispy }}
+                <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add to cart">
+              </form>
             </div>
-            <div class="mb-5">
-              <div class="input-group mb-3" style="max-width: 120px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-              </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
             </div>
-
-            </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-
           </div>
         </div>
       </div>
