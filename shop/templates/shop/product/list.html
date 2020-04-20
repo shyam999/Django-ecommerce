@@ -1,4 +1,4 @@
-{% extends "shop/base/base2.html" %}
+{% extends "shop/base/base.html" %}
 {% load static %}
 {% block title %}
 {% if category %}{{ category.name }}{% else %}Products{% endif %}
@@ -17,13 +17,13 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-9 order-2">
-                {% for product in products %}
                 <div class="row mb-5">
+                    {% for product in products %}
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
                                 <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" 
-                                        alt="Image placeholder" class="img-fluid"></a>
+                                        alt="Image placeholder" class="img-fluid" style="height: 10vw;"></a>
                             </figure>
                             <div class="block-4-text p-4">
                                 <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
@@ -32,8 +32,9 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                
                 <div class="row" data-aos="fade-up">
                     <div class="col-md-12 text-center">
                         <div class="site-block-27">
