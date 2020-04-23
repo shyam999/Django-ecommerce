@@ -48,9 +48,9 @@ Your shopping cart
                                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                                 {% csrf_token %}
                                                 {{ item.update_quantity_form.quantity }}
-                                                {{ item.update_quantity_form.update }}
+                                                {{ item.update_quantity_form.override }}
                                                 <input class="btn btn-outline-primary js-btn-plus" type="submit"
-                                                    value="update">
+                                                    value="Update">
                                             </form>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ Your shopping cart
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-lg py-3 btn-block"
-                                    onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                    onclick="window.location='{% url "order:order_create" %}'">Proceed To Checkout</button>
                             </div>
                         </div>
                     </div>
