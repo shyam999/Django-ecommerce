@@ -828,7 +828,6 @@ var widgetsMouse = $.widget( "ui.mouse", {
 		this.started = false;
 	},
 
-	// TODO: make sure destroying one instance of mouse doesn't mess with
 	// other instances of mouse
 	_mouseDestroy: function() {
 		this.element.off( "." + this.widgetName );
