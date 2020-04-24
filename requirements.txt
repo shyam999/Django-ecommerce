@@ -11,6 +11,5 @@ Unipath==1.0
 python-decouple==3
 Markdown==2.6.6
 bleach==3.1.4
-psycopg2==2.8.5
 whitenoise==5.0.1
 python-dotenv==0.12.0
