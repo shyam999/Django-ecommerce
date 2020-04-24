@@ -1,4 +1,5 @@
 # env #
+.env
 env
 env/*
 
@@ -11,6 +12,7 @@ db.sqlite3
 media
 
 # Visual Studio Code # 
+.vscode
 .vscode/* 
 !.vscode/settings.json 
 !.vscode/tasks.json 
