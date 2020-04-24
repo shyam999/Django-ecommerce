@@ -1,5 +1,6 @@
 {% extends "shop/base/base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}
 Your shopping cart
 {% endblock %}
@@ -84,12 +85,15 @@ Your shopping cart
                         <label class="text-black h4" for="coupon">Coupon</label>
                         <p>Enter your coupon code if you have one.</p>
                     </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                        <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-primary btn-sm">Apply Coupon</button>
-                    </div>
+                    <form action="{% url "coupons:apply" %}" method="post">
+                        {% csrf_token %}
+                        <div class="col-md-8 mb-3 mb-md-0">
+                            {{ coupon_apply_form.code|as_crispy_field }}
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-sm">Apply Coupon</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6 pl-5">
@@ -106,7 +110,7 @@ Your shopping cart
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">{{ cart.get_total_price }}</strong>
+                                <strong class="text-black">{{ cart.get_total_price_after_discount|floatformat:"2" }}</strong>
                             </div>
                         </div>
 
