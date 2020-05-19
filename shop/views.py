@@ -29,7 +29,9 @@ def product_list(request, category_slug=None):
 
 # class ProductListView(generic.ListView):
 #     template_name = 'shop/product/list.html'
-#     queryset = Product.objects.filter(available=True)
+
+#     def get_queryset(self):
+#         return Product.objects.filter(available=True)
 
 #     def get_context_data(self, **kwargs):
 #         context = super().get_context_data(**kwargs)
