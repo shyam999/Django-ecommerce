@@ -2,6 +2,20 @@ from django.shortcuts import render, get_object_or_404
 from cart.forms import CartAddProductForm
 from .models import Category, Product
 
+# from django.views import generic
+
+# class IndexView(generic.ListView):
+#     template_name = 'shop/index.html'
+#     context_object_name = 'products'
+
+#     def get_queryset(self):
+#         '''Return five lattest products
+#         '''
+#         return Product.objects.filter(created__lte=timezone.now()
+#         ).order_by('-created')[:5]
+
+
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
