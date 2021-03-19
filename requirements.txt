@@ -1,6 +1,6 @@
 Django==3.0.7
 django-crispy-forms==1.9.0
-Pillow==7.1.0
+Pillow==8.1.1
 six==1.14.0
 pytest==5.4.1
 pytest-django==3.9.0
