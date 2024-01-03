@@ -74,7 +74,7 @@ Your shopping cart
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <button onclick="window.location='{% url "shop:product_list" %}'" class="btn btn-primary btn-sm btn-block">Continue Shopping</button>
+                        <button onclick=window.location='{% url "shop:product_list" %}' class="btn btn-primary btn-sm btn-block">Continue Shopping</button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-primary btn-sm btn-block">Checkout</button>
@@ -88,7 +88,7 @@ Your shopping cart
                     <form action="{% url "coupons:apply" %}" method="post">
                         {% csrf_token %}
                         <div class="col-md-8 mb-3 mb-md-0">
-                            {{ coupon_apply_form.code|as_crispy_field }}
+                            {{ coupon_apply_form }}
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary btn-sm">Apply Coupon</button>
@@ -117,7 +117,7 @@ Your shopping cart
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-lg py-3 btn-block"
-                                    onclick="window.location='{% url "order:order_create" %}'">Proceed To Checkout</button>
+                                    onclick=window.location='{% url "order:order_create" %}'>Proceed To Checkout</button>
                             </div>
                         </div>
                     </div>

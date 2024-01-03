@@ -15,6 +15,9 @@ from .models import Category, Product
 #         ).order_by('-created')[:5]
 
 
+# def shop_index(request):
+#     #return the home page
+#     return render(request,'shop/home.html')
 
 def product_list(request, category_slug=None):
     category = None
