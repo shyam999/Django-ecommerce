@@ -21,6 +21,8 @@ INSTALLED_APPS = [
 
     #third-party apps
     'crispy_forms',
+    'django_bootstrap5',
+    'crispy_bootstrap4',
 
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',

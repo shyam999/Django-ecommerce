@@ -1,0 +1,30 @@
+{% extends "shop/base/inner_page.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block inner_page %}
+      <div class="main">
+        <section class="module bg-dark-60 contact-page-header bg-dark" data-background="{% static 'img/call.jpg' %}">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Reach out to us</h2>
+                <div class="module-subtitle font-serif">We love to get feedback from our customers, send us an email or give us a call whenever you feel like</div>
+              </div>
+            </div>
+            <div role="tabpanel">
+                <ul class="nav nav-tabs font-alt" role="tablist">
+                  <li class="active"><a href="#email" data-toggle="tab"><span class="icon-envelope"></span>Email</a></li>
+                  <li><a href="#phone" data-toggle="tab"><span class="icon-mobile"></span>Phone</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="email"><h3>Send an email to glamarance@gmail.com, we'll read into it.</h3>               </div>
+                  <div class="tab-pane" id="phone"><h4>Nothing gets the job done better than a casual phone call, give it a go. While you're at it, don't forget to engage on our different platforms, we love to see it.</h4>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+        <hr class="divider-w">
+        
+      </div>
+{% endblock %}

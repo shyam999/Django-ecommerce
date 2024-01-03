@@ -1,0 +1,45 @@
+{% extends "shop/base/inner_page.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block inner_page %}
+      <div class="main">
+        <section class="module bg-dark-60 about-page-header" data-background="{% static 'img/Picsart_23-12-19_02-14-39-756.jpg' %}">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">About</h2>
+                <div class="module-subtitle font-serif">We’re your online one-stop shop dedicated to serving your every hair need, we won't stop until you're satisfied.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <h5 class="font-alt">We’re your new home for assorted hair solutions</h5><br/>
+                
+              </div>
+              <div class="col-sm-6">
+                <h6 class="font-alt"><span class="icon-scissors"></span> Hair Design
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="20" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-puzzle"></span> Assorted Accessories
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="80" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-profile-female"></span> Wigs
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="50" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+{% endblock %}

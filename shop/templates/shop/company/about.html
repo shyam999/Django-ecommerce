@@ -1,0 +1,44 @@
+{% extends "shop/base/base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block content %}
+
+<!-- About Section -->
+<section id="about" class=" text-black mb-0">
+    <div class="container">
+        <!-- About Section Heading -->
+        <h2 class="text-center text-uppercase text-white">About Us</h2>
+        <!-- Icon Divider -->
+        <div class="row">
+            <div class="shadow-small row p-4 border rounded">
+                <div class="col-7 p-5">
+                    <h2>
+                        Welcome to Glamarance, the ultimate destination for high-quality hair extensions. 
+                    </h2>
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'img/glama.jpg' %}" alt="">
+                </div>
+            </div>
+            <br>
+            <div class="shadow-small row p-4 border rounded">
+                <div class="col ml-auto">
+                    <h2>
+                        Whether you want to add length, volume, color, or texture to your hair, 
+                        we have the perfect solution for you. Our hair extensions are made from 100% human hair,
+                         ethically sourced and carefully selected for their durability and natural look. 
+                    </h2>
+                </div>      
+                <div class="col ml-auto">
+                    <h2>
+                        You can choose from a variety of styles, colors, and lengths to suit your preference and personality. Our hair extensions are easy to apply, remove, and maintain, and they will not damage your natural hair. With Glamarance, you can transform your look in minutes and feel confident and beautiful every day.
+                    </h2>
+                </div>  
+            </div>
+
+
+
+
+    </div>
+</section>
+{% endblock %}

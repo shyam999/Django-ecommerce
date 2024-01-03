@@ -1,0 +1,48 @@
+{% extends "shop/base/prod_base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block inner_page %}
+
+    {% for category in categories %}
+    <section class="module bg-dark-30 parallax-bg restaurant-menu-bg" data-background="{% static 'img/glama3.jpg' %}">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-5">
+            <div class="alt-module-subtitle"><span class="holder-w"></span>
+                <h5 class="font-serif">{{category.slug}}</h5><span class="holder-w"></span>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+            <h2 class="module-title font-alt mb-0"><a href="{{category.get_absolute_url}}">{{category.name}}</a></h2>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="module-small">
+        <div class="container">
+            <div class="row multi-columns-row">
+                {% for product in category.products.all %}
+                <div class="col-sm-6">
+                    <div class="menu">
+                        <div class="row">
+                        <div class="col-sm-8">
+                            <h4 class="menu-title font-alt">{{product.name}}</h4>
+                            <div class="menu-detail font-serif">{{product.description}}</div>
+                        </div>
+                        <div class="col-sm-4 menu-price-detail">
+                            <h4 class="menu-price font-alt">SEK{{product.price}}</h4>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </section>
+    {% endfor %}
+    
+{% endblock %}

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
 
     #third-party apps
     'crispy_forms',
+    'bootstrap5',
 
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
@@ -120,6 +121,6 @@ MEDIA_URL = '/media/'
 
 
 #Crispy templates for form rendering
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 CART_SESSION_ID = 'cart'

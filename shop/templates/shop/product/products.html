@@ -1,0 +1,46 @@
+{% extends "shop/base/inner_page.html" %}
+{% load django_bootstrap5 %}
+{% load static %} 
+{% block inner_page %}
+      
+<div class="main">
+    <section class="module bg-dark-60 portfolio-page-header" data-background="{% static 'img/glama-firstpage2.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            {# checking if the category is not none #}
+            {% if category %}
+            <h2 class="module-title font-alt">{{category.name}} </h2>
+            {% else %}
+            <h2 class="module-title font-alt">Our Collection </h2>
+            {% endif %}
+            <div class="module-subtitle font-serif">Quick look at all the hot items in store for you</div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <!-- Portfolio Items -->
+    <section class="module-small">
+      <div class="container">
+        <div class="row multi-columns-row">
+            {% for product in products %}
+            <div class="col-sm-6 col-md-3 col-lg-3">
+              <div class="shop-item">
+                <div class="shop-item-image"><img src="{{ product.image.url }}" alt="Accessories Pack" style="height: 500;"/>
+                  <div class="shop-item-detail"><a class="btn btn-round btn-b" href="{{ product.get_absolute_url }}"><span class="icon-basket">Add To Cart</span></a></div>
+                </div>
+                <h4 class="shop-item-title font-alt"><a href="{{ product.get_absolute_url }}">{{product.name}}</a></h4>SEK {{product.price}}
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+{% endblock %}
+

@@ -1,56 +1,64 @@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <header class="site-navbar" role="banner">
-        <div class="site-navbar-top">
+        <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
             <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-                        <form action="" class="site-block-top-search">
-                            <span class="icon icon-search2"></span>
-                            <input type="text" class="form-control border-0" placeholder="Search">
-                        </form>
-                    </div>
-
-                    <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-                        <div class="site-logo">
-                            <a href="#" class="js-logo-clone">Glamarance Hair</a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-                        <div class="site-top-icons">
-                            <ul>
-                                <li><a href="#"><span class="icon icon-person"></span></a></li>
-                                <li>
-                                    <a href="{% url "cart:cart_detail" %}" class="site-cart">
-                                        <span class="icon icon-shopping_cart"></span>
-                                        <span class="count">
-                                        {% with total_items=cart|length %}
-                                            {% if cart|length > 0 %}
-                                                {{ total_items|pluralize }}
-                                            {% else %}
-                                                0
-                                            {% endif %}
-                                        {% endwith %}
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="d-inline-block d-md-none ml-md-0"><a href="#"
-                                        class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <nav class="site-navigation text-right text-md-center" role="navigation">
-            <div class="container">
-                <ul class="site-menu js-clone-nav d-none d-md-block">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{% url 'shop:product_list' %}">Shop</a></li>
-                    <li><a href="shop.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+              <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="{% url 'shop:shop_index' %}">Glamarance Hair</a>
+              </div>
+              <div class="collapse navbar-collapse" id="custom-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{% url 'shop:shop_index' %}">Home</a></li>
+                  <li><a href="{% url 'shop:about' %}">About</a></li>
+                  <li><a href="{% url 'shop:contact_us' %}">Contact</a></li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="{% url 'shop:product_list' %}" data-toggle="dropdown">Shop</a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li class="dropdown"><a href="{% url 'shop:product_list' %}">Products</a>
+                      </li>
+                      <li><a href="{% url 'shop:categories' %}">Categories</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="{% url 'cart:cart_detail' %}" class="site-cart">
+                        <span class="fa fa-shopping-cart"></span>
+                        <span class="count">
+                        {% with total_items=cart|length %}
+                            {% if cart|length > 0 %}
+                                {{ total_items }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        {% endwith %}
+                        </span>
+                    </a>
+                </li>
                 </ul>
+              </div>
             </div>
-        </nav>
+          </nav>
     </header>
+    <!-- <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html">Titan</a>
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url 'shop:shop_index' %}">Home</a></li>
+              <li><a href="{% url 'shop:about' %}">About</a></li>
+              <li><a href="{% url 'shop:contact_us' %}">Contact</a></li>
+              <li class="dropdown"><a class="dropdown-toggle" href="{% url 'shop:product_list' %}" data-toggle="dropdown">Shop</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Product</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="shop_product_col_3.html">3 columns</a></li>
+                      <li><a href="shop_product_col_4.html">4 columns</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="shop_single_product.html">Single Product</a></li>
+                  <li><a href="shop_checkout.html">Checkout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> -->

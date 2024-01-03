@@ -1,21 +1,17 @@
-{% extends "shop/base/base.html" %}
+{% extends "shop/base/prod_base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %}
 Your shopping cart
 {% endblock %}
-{% block content %}
+{% block inner_page %}
+
+<br>
+<br>
+<br>
 
 
-<div class="bg-light py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                    class="text-black">Cart</strong></div>
-        </div>
-    </div>
-</div>
-
+{% if cart %}
 <div class="site-section">
     <div class="container">
         <div class="row mb-5">
@@ -36,29 +32,30 @@ Your shopping cart
                             <tr>{% for item in cart %}
                                 {% with product=item.product %}
                             <tr>
-                                <td class="product-thumbnail">
-                                    <img src="{{ product.image.url }}" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">{{ product.name }}</h2>
-                                </td>
-                                <td>${{ item.price }}</td>
-                                <td>
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                                {% csrf_token %}
-                                                {{ item.update_quantity_form.quantity }}
-                                                {{ item.update_quantity_form.override }}
-                                                <input class="btn btn-outline-primary js-btn-plus" type="submit"
-                                                    value="Update">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>${{ item.total_price }}</td>
-                                <td><a href="{% url "cart:cart_remove" product.id %}"
-                                        class="btn btn-primary btn-sm">X</a></td>
+                                <td class="hidden-xs " width="200" height="190"><a href="{{product.get_absolute_url}}"><img src="{{ product.image.url }}" alt="{{item.description}}" style="transform:scale(0.75); -moz-transform: scale(.75);"/></a></td>
+                      <td>
+                        <h5 class="product-title font-alt">{{ product.name }}</h5>
+                      </td>
+                      <td class="hidden-xs">
+                        <h5 class="product-title font-alt">SEK {{ item.price }}</h5>
+                      </td>
+                      <td>
+                        <h4>{{item.quantity}}</h4> 
+                        <a href="{{item.product.get_absolute_url}}"> <button class=" btn btn-primary btn-sm">update quantity</div>  </a>
+                        <!-- <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+                            {% csrf_token %}
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.override }}
+                            <input class="btn btn-outline-primary js-btn-plus" type="submit" value="Update">
+                        </form> -->
+                      </td>
+                      <td>
+                        <h5 class="product-title font-alt">SEK {{ item.total_price }}</h5>
+                      </td>
+                      <td>
+                        <a href="{% url 'cart:cart_remove' product.id %}"
+                            class="btn btn-primary btn-sm">X</a></td>
+                      </td>
                             </tr>
                             {% endwith %}
                             {% endfor %}
@@ -70,31 +67,20 @@ Your shopping cart
             </form>
         </div>
 
-        <div class="row">
+        
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
                         <button onclick=window.location='{% url "shop:product_list" %}' class="btn btn-primary btn-sm btn-block">Continue Shopping</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-outline-primary btn-sm btn-block">Checkout</button>
+                        <form action="{% url 'cart:cart_clear' %}">
+                            <button class="btn btn-outline-primary btn-sm btn-block">Clear Cart</button>
+                        </form>
+                        
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label class="text-black h4" for="coupon">Coupon</label>
-                        <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <form action="{% url "coupons:apply" %}" method="post">
-                        {% csrf_token %}
-                        <div class="col-md-8 mb-3 mb-md-0">
-                            {{ coupon_apply_form }}
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary btn-sm">Apply Coupon</button>
-                        </div>
-                    </form>
-                </div>
+
             </div>
             <div class="col-md-6 pl-5">
                 <div class="row justify-content-end">
@@ -107,23 +93,53 @@ Your shopping cart
 
                         <div class="row mb-5">
                             <div class="col-md-6">
-                                <span class="text-black">Total</span>
+                                <span class="text-black"><h4>Total</h4></span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">{{ cart.get_total_price_after_discount|floatformat:"2" }}</strong>
+                                <strong class="text-black">SEK {{ cart.get_total_price_after_discount|floatformat:"2" }}</strong>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary btn-lg py-3 btn-block"
-                                    onclick=window.location='{% url "order:order_create" %}'>Proceed To Checkout</button>
+                                <button class="btn btn-primary btn-lg py-4"
+                                    onclick=window.location="{% url 'order:order_create' %}">Proceed To Checkout</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
+{% else %}
+<h1 class="text-center">Your Shopping Cart is Empty!</h1>
+<div class="container text-center">
+    <a href="{% url 'shop:shop_index' %}" role="button" class="btn btn-primary mt-3">Go to Home
+    </a>
+</div>
+{% endif %}
 {% endblock %}
+<div class="row">
+    <div class="col-md-12">
+        <label class="text-black h4" for="coupon">Coupon</label>
+        <p>Enter your coupon code if you have one.</p>
+    </div>
+    <form action="{% url 'coupons:apply' %}" method="post">
+        {% csrf_token %}
+        <div class="col-md-8 mb-3 mb-md-0">
+            {{ coupon_apply_form|crispy }}
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-sm">Apply Coupon</button>
+        </div>
+    </form>
+</div>
+
+<form action="{% url 'cart:cart_add' product.id %}" method="post">
+    {% csrf_token %}
+    {{ item.update_quantity_form.quantity }}
+    {{ item.update_quantity_form.override }}
+    <input class="btn btn-outline-primary js-btn-plus" type="submit"
+        value="Update">
+</form>
