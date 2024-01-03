@@ -11,8 +11,8 @@ SECRET_KEY = '5yo93-8a^%idwkzxz@6gq67p2ml#sraf4=7#pqg+28mv)koo@m'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '.herokuapp.com'
+
+    '*'
 ]
 
 # Application definition
@@ -26,7 +26,8 @@ INSTALLED_APPS = [
 
     #third-party apps
     'crispy_forms',
-    'bootstrap5',
+    'django_bootstrap5',
+    'crispy_bootstrap4',
 
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
