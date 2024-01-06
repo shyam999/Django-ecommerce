@@ -1,9 +1,10 @@
-{% extends "shop/base/base.html" %}
+{% extends "shop/base/prod_base.html" %}
 {% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
 {% block title %}
 Checkout
 {% endblock %}
-{% block content %}
+{% block inner_page %}
 <div class="container">
     <h1 class="text-center">Checkout</h1>
     <div class="order-info">
@@ -16,10 +17,11 @@ Checkout
             </li>
             {% endfor %}
         </ul>
-        <h4>Total: ${{ cart.get_total_price }}</h4>
+        <h4>Total: SEK {{ cart.get_total_price }}</h4>
     </div>
-    <form action="." method="post" class="order-form">
-        {{ form|crispy }}
+    <form action="." method="POST" class="order-form">
+        {% bootstrap_form form layout='inline' %}
+        <br>
         <p><input class="btn btn-primary btn-sm btn-block" type="submit" value="Place order"></p>
         {% csrf_token %}
     </form>

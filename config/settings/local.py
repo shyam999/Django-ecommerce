@@ -21,6 +21,8 @@ INSTALLED_APPS = [
 
     #third-party apps
     'crispy_forms',
+    'django_bootstrap5',
+    'crispy_bootstrap4',
 
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
@@ -113,3 +115,5 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CART_SESSION_ID = 'cart'
+
+#admin password = shop1234
