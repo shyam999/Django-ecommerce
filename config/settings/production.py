@@ -46,6 +46,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://glamarance-production.up.railway.app',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://glamarance-production.up.railway.app'
+]
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
